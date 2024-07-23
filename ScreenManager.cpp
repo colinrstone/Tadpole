@@ -80,7 +80,8 @@ void ScreenManager::Update() {
 
 
 
-		mPlayScreen->Update();
+		//mPlayScreen->Update();
+		mTownScreen->Update();
 		if (mPlayScreen->GameOver()) {
 
 			mCurrentScreen = start;
@@ -145,11 +146,11 @@ void ScreenManager::Render() {
 
 	case play:
 
+		//mPlayScreen->Render();
+		mTownScreen->Render();
+		if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE)) {
 
-		mPlayScreen->Render();
-		if (mInput->KeyPressed(SDL_SCANCODE_RETURN)) {
-
-			mCurrentScreen = battle;
+			mCurrentScreen = start;
 			
 		}
 		break;

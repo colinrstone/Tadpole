@@ -9,6 +9,7 @@
 #include "Stage.h"
 #include "InteractionMap.h"
 #include "Town.h"
+#include "Sidebar.h"
 
 
 using namespace QuickSDL;
@@ -22,8 +23,12 @@ private:
 	InputManager* mInput;
 	AudioManager* mAudio;
 
-	Stage* mStage;
 	Town* mTown;
+	int mStageNumber;
+
+	SideBar* mSideBar;
+
+
 
 private:
 

@@ -6,8 +6,9 @@ TownScreen::TownScreen() {
 	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
 
-	mStage = NULL;
-
+	mTown = NULL;
+	mStageNumber = 1;
+	mSideBar = NULL;
 
 }
 
@@ -18,20 +19,37 @@ TownScreen::~TownScreen() {
 	mAudio = NULL;
 
 
+	mTown = NULL;
+	mStageNumber = NULL;
+	mSideBar = NULL;
+
 }
 
 
 void TownScreen::StartNewTown() {
 
-	mTown = new Town();
+	//Needs to be dynamic to include which stage you are on in campaign
 
+	//Put in function that interchanges stage number
+	//mTown = new Town(mStageNumber);
+
+	// if mStageNumber does not exist use 1, other wise use stage number
+	
+	mStageNumber = 2;
+
+	//Load Town object
+	mTown = new Town();
+	mTown->LoadInitialGrids(mStageNumber);
+
+	//Load Sidebar object
+	mSideBar = new SideBar();
 }
 
 
 void TownScreen::Update() {
 
-
-	mStage->Update();
+	mSideBar->Update();
+	mTown->Update();
 
 
 }
@@ -39,8 +57,8 @@ void TownScreen::Update() {
 
 void TownScreen::Render() {
 
-
-	mStage->Render();
+	mSideBar->Render();
+	mTown->Render();
 
 
 
